@@ -1,12 +1,12 @@
 import React from "react";
-import { Home } from "./pages";
+import { Home, Edit } from "./pages";
 import { Routes, Route } from 'react-router-dom'
 const App = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/Edit" element={<></>}/>
+        <Route path="/edit/:id" element={<Edit />}/>
       </Routes>
     </>
   );

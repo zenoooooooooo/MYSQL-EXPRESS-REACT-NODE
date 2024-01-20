@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { CustomSection, CustomButton } from "../../components";
-
+import { Edit } from "../index";
+import { Link } from "react-router-dom";
 const Datas = () => {
   const [data, setData] = useState([]);
 
@@ -39,6 +40,12 @@ const Datas = () => {
                   className="bg-red-500 border border-solid border-black p-2"
                   text="DELETE"
                 />
+                <Link to={`/edit/${data.student_id}`}>
+                  <CustomButton
+                    className="bg-blue-500 border border-solid border-black p-2"
+                    text="EDIT"
+                  />
+                </Link>
               </li>
             );
           })}
