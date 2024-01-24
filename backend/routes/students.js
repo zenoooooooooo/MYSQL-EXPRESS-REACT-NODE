@@ -47,7 +47,31 @@ router.get("/", async (req, res) => {
     });
   }
 });
+router.get("/desc", async (req, res) => {
+  try {
+    const query = "SELECT * FROM students ORDER BY age DESC"
+    const [rows, fields] = await db.query(query)
+    res.status(200).json(rows)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      message: errorMessage
+    })
+  }
+})
 
+router.get("/asc", async (req, res) => {
+  try {
+    const query = "SELECT * FROM students ORDER BY age asc"
+    const [rows, fields] = await db.query(query)
+    res.status(200).json(rows)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      message: errorMessage
+    })
+  }
+})
 router
   .route("/:id")
   .get(async (req, res) => {

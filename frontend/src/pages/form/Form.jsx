@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { CustomInput, CustomSection, CustomButton } from "../../components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Form = () => {
   const [data, setData] = useState({
     student_id: "",
@@ -10,6 +11,7 @@ const Form = () => {
     age: "",
   });
 
+  const navigate = useNavigate();
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
     console.log(data);
@@ -25,12 +27,7 @@ const Form = () => {
       );
       console.log(response.data);
 
-      setData({
-        student_id: "",
-        first_name: "",
-        last_name: "",
-        age: "",
-      });
+      navigate("/");
     } catch (err) {
       console.error(`Error submitting form: ${err}`);
     }
@@ -40,7 +37,7 @@ const Form = () => {
   return (
     <CustomSection
       tag="form"
-      title="Student Info"
+      title="Add Student"
       className="bg-gray-300 p-4 flex items-center justify-center flex-col"
       onSubmit={handleSubmit}
     >

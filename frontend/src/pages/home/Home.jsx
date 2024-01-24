@@ -3,7 +3,6 @@ import { Datas, Form } from "../index";
 const Home = () => {
   return (
     <>
-      <Form />
       <Datas />
     </>
   );

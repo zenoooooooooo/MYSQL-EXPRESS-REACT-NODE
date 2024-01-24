@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CustomSection, CustomButton, CustomInput } from "../../components";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +12,17 @@ const Edit = () => {
     age: "",
   });
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/students/${id}`)
+      .then((res) => {
+        console.log("Data from API:", res.data);
+        setData(res.data[0]);
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+      });
+  }, []);
   function handleChange(e) {
     setData({ ...data, [e.target.name]: e.target.value });
     console.log(data);
